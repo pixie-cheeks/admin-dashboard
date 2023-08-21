@@ -1,0 +1,161 @@
+/* Setup */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 62.5%;
+	/* font-family: 'Roboto'; */
+}
+
+body {
+	min-height: 100vh;
+	font-size: 2rem;
+}
+
+/* Layout */
+body {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		'sidebar header'
+		'sidebar main';
+}
+
+.header {
+	background-color: white;
+	grid-area: header;
+}
+
+.sidebar {
+	background-color: cyan;
+	grid-area: sidebar;
+}
+
+.main {
+	background-color: #ccc;
+	grid-area: main;
+}
+
+/* Sidebar */
+.sidebar > div {
+	margin-bottom: 5rem;
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+/* Header */
+.header {
+	padding: 1rem 2rem;
+}
+
+.head {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.head .search-section {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.head .user-section {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: center;
+}
+
+.title {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Main */
+.main {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	padding: 3rem 2rem;
+	/* grid-template-rows: 1fr 1fr; */
+	grid-template-areas:
+		'projects announcements'
+		'projects trending';
+	text-align: left;
+}
+
+.items {
+	padding: 1rem 0;
+}
+
+.items:first-child {
+	padding-top: 0;
+}
+
+/* Projects */
+.projects {
+	grid-area: projects;
+}
+
+.card-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 50rem));
+	gap: 2rem;
+}
+
+.cards {
+	background-color: white;
+}
+
+/* Announcements */
+.announcements .list {
+	background-color: white;
+	padding: 2rem;
+}
+
+.announcements .description {
+	font-weight: bold;
+}
+
+.announcements .description + .content {
+	color: gray;
+	font-size: 1.5rem;
+}
+
+.announcements .items {
+	border-bottom: 1px solid #ccc;
+}
+
+.items:nth-child(3) {
+	border: none;
+}
+
+/* Trending */
+.trending > .list {
+	background-color: white;
+	padding: 2rem;
+}
+
+.trending .items {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		'image user'
+		'image project';
+}
+
+.items img {
+	grid-area: image;
+}
+
+.items .user {
+	grid-area: user;
+}
+
+.items .project {
+	grid-area: project;
+	color: gray;
+}
