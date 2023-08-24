@@ -28,59 +28,157 @@ body {
 }
 
 .header {
-	background-color: white;
 	grid-area: header;
+	z-index: 1;
 }
 
 .sidebar {
-	background-color: rgb(125, 192, 49);
 	grid-area: sidebar;
+	z-index: 2;
 }
 
 .main {
-	background-color: #ccc;
 	grid-area: main;
+	z-index: 0;
 }
 
 /* Sidebar */
 .sidebar {
+	background-color: #0284c7;
 	color: white;
 	font-weight: bold;
 	fill: white;
+	padding: 3rem 2rem;
 }
 
 .sidebar > div {
 	margin-bottom: 5rem;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
+	align-items: center;
+	font-size: 2.8rem;
+	line-height: 50px;
+}
+
+.sidebar .logo-container {
+	font-size: 3.5rem;
+}
+
+.logo-container .logo {
+	width: 60px;
+}
+
+.sidebar .icon {
+	width: 30px;
+}
+
+.sidebar .icon,
+.sidebar .logo {
+	justify-self: center;
 }
 
 /* Header */
+.header img {
+	height: 70px;
+}
+
+.header svg {
+	width: 30px;
+}
+
 .header {
-	padding: 1rem 2rem;
+	padding: 2rem 4rem;
+	box-shadow: 1px 1px 5px 0px rgb(150, 147, 147);
 }
 
 .head {
+	/* padding: 2rem 4rem; */
+	background-color: white;
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 3fr 2fr;
+	justify-items: space-between;
+	gap: 20px;
+	margin-bottom: 3rem;
 }
 
-.head .search-section {
+.search-section {
 	display: grid;
 	grid-template-columns: auto 1fr;
+	gap: 20px;
+	align-items: center;
 }
 
-.head .user-section {
+.search-section input {
+	font-size: 2.5rem;
+	padding: 10px;
+	height: 4rem;
+	background-color: #e7e5e4;
+	border-radius: 20px;
+	border: none;
+}
+
+.user-section {
+	/* margin-left: 80px; */
 	display: grid;
-	grid-template-columns: repeat(3, minmax(100px 1fr));
-	justify-content: center;
+	grid-template-columns: repeat(3, max-content);
+	gap: 30px;
+	align-items: center;
+	justify-content: end;
+	font-weight: bold;
+	font-size: 2.3rem;
 }
 
 .title {
 	display: grid;
-	grid-template-columns: auto auto;
-	justify-content: space-between;
+	grid-template-columns: 1fr 1fr;
 	align-items: center;
+}
+
+.title .content {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	column-gap: 20px;
+	grid-template-areas:
+		'image greeting'
+		'image title';
+}
+
+.content img {
+	grid-area: image;
+	min-height: 100px;
+}
+
+.greeting {
+	grid-area: greeting;
+	font-size: 1.4rem;
+	align-self: end;
+}
+
+.title-name {
+	grid-area: title;
+	font-size: 2.4rem;
+}
+
+.greeting,
+.title-name {
+	font-weight: bold;
+}
+
+.buttons {
+	display: grid;
+	gap: 30px;
+	grid-template-columns: repeat(3, max-content);
+	justify-self: end;
+}
+
+.buttons > button {
+	color: white;
+	font-size: 2rem;
+	border: none;
+	background-color: #0284c7;
+	padding: 1rem 3rem;
+	border-radius: 25px;
+	font-weight: 600;
 }
 
 /* Main */
@@ -93,6 +191,14 @@ body {
 		'projects announcements'
 		'projects trending';
 	text-align: left;
+	background-color: #e7e5e4;
+	column-gap: 3rem;
+}
+
+.section-title {
+	font-weight: 600;
+	font-size: 2.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .items {
@@ -103,25 +209,58 @@ body {
 	padding-top: 0;
 }
 
+.cards,
+.announcements .list,
+.trending .list {
+	box-shadow: 4px 4px 5px rgb(194, 188, 188);
+}
+
 /* Projects */
 .projects {
 	grid-area: projects;
 }
 
+.projects svg {
+	height: 30px;
+}
+
 .card-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 50rem));
+	grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
 	gap: 2rem;
 }
 
 .cards {
 	background-color: white;
+	border-left: 1rem #d97706 solid;
+	padding: 4rem 1rem 2rem 4rem;
+	border-radius: 10px;
+	display: grid;
+	gap: 3rem;
+}
+
+.cards .icons {
+	justify-self: end;
+}
+
+.icons > svg {
+	margin-right: 2.5rem;
+}
+
+.cards .title {
+	font-size: 2.2rem;
+	font-weight: bold;
+}
+
+.cards .description {
+	color: gray;
 }
 
 /* Announcements */
 .announcements .list {
 	background-color: white;
-	padding: 2rem;
+	padding: 2rem 4rem;
+	border-radius: 15px;
 }
 
 .announcements .description {
@@ -129,8 +268,8 @@ body {
 }
 
 .announcements .description + .content {
-	font-weight: 300;
 	font-size: 1.5rem;
+	color: gray;
 }
 
 .announcements .items {
@@ -142,14 +281,20 @@ body {
 }
 
 /* Trending */
+.trending {
+	margin-top: 3rem;
+}
+
 .trending > .list {
 	background-color: white;
 	padding: 2rem;
+	border-radius: 15px;
 }
 
 .trending .items {
 	display: grid;
 	grid-template-columns: auto 1fr;
+	column-gap: 1.5rem;
 	grid-template-areas:
 		'image user'
 		'image project';
@@ -157,13 +302,15 @@ body {
 
 .items img {
 	grid-area: image;
+	height: 70px;
 }
 
 .items .user {
 	grid-area: user;
+	align-self: end;
 }
 
 .items .project {
 	grid-area: project;
-	font-weight: 300;
+	color: gray;
 }
